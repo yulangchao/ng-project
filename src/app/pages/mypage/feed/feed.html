@@ -7,6 +7,7 @@
       <img class="photo-icon" src="{{ ( message.author | baProfilePicture ) }}">
       <span class="sub-photo-icon" [ngClass]="message.type"></span>
     </div>
+    {{ Object.keys(message) }}
     <div class="text-block text-message">
       <div class="message-header">
         <span class="author">{{ message.author }} {{ message.surname}}</span>

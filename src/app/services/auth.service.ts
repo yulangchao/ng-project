@@ -31,11 +31,11 @@ export class AuthService {
   }
 
   logout() {
+    localStorage.removeItem('user');
     this.afAuth.auth.signOut().then(
        () => {
             console.log('Signed Out');
             this.router.navigate(['login']);
-            localStorage.removeItem('user');
        },
 
        (error) => {
@@ -65,12 +65,22 @@ export class AuthService {
 
 
 
-  signup(email, password) {
-    this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(
+  signup(values) {
+    this.afAuth.auth.createUserWithEmailAndPassword(values.email, values.passwords.password).then(
       (user) => {
       // Handle Errors here.
+      user.updateProfile({
+          displayName: values.name,
+      }).then(function() {
+          // Update successful.
+      }, function(error) {
+          // An error happened.
+      });
+      user.displayName = values.name;
+      localStorage.setItem('user', JSON.stringify(user));
       user.sendEmailVerification().then( () => {
            console.log("Email sent");
+           this.router.navigate(['']);
       },
       (error) => {
            console.log(error);

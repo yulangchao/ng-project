@@ -31,11 +31,11 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('user');
+
     this.afAuth.auth.signOut().then(
        () => {
             console.log('Signed Out');
-            this.router.navigate(['login']);
+
        },
 
        (error) => {
@@ -44,6 +44,8 @@ export class AuthService {
        }
 
     );
+        localStorage.removeItem('user');
+        this.router.navigate(['login']);
   }
   signin(values){
 

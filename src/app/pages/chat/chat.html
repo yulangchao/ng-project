@@ -1,0 +1,71 @@
+<!--<div class="auth-main">
+  <div class="auth-block chat-block">
+    <div class="row">
+
+
+      <div class="col-md-3">
+        <ul>
+          <li id="all" (click)="refresh($event)">all</li>
+          <li *ngFor="let user of users | async" id="{{user.uid}}" (click)="refresh($event)">{{user.displayName}}</li>
+
+
+        </ul>
+
+
+      </div>
+
+
+
+      <div class="col-md-9">
+          <ul>
+            <li *ngFor="let item of items | async">
+              {{ item.name }} {{item.text}} {{item.date}}
+            </li>
+          </ul>
+
+          <div class="input-group footer">
+            <input type="text" [(ngModel)]="chatData.text" class="form-control with-warning-addon" placeholder="Recipient's username" aria-describedby="basic-addon2">
+            <span (click)="send()" class="input-group-addon input-group-addon-warning addon-right" id="basic-addon2">@example.com</span>
+          </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<div class="chat_window">
+  <div class="top_menu">
+    <div class="buttons">
+      <div class="button close"></div>
+      <div class="button minimize"></div>
+      <div class="button maximize"></div>
+      <div class="dropdown pull-right online-user visible-xs">
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown" href="#">
+        Online<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li *ngFor="let user of users | async; let i = index"><a>{{user.displayName}}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="title">Chat</div>
+  </div>
+  <ul class="messages"></ul>
+  <div class="bottom_wrapper clearfix">
+    <div class="message_input_wrapper">
+      <input class="message_input" placeholder="Type your message here..." />
+    </div>
+    <div class="send_message">
+      <div class="icon"></div>
+      <div class="text">Send</div>
+    </div>
+  </div>
+</div>
+<div class="message_template">
+  <li class="message">
+    <div class="avatar"></div>
+    <div class="text_wrapper">
+      <div class="text"></div>
+    </div>
+  </li>
+</div>

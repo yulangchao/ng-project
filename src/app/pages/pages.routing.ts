@@ -11,6 +11,10 @@ export const routes: Routes = [
     loadChildren: 'app/pages/login/login.module#LoginModule'
   },
   {
+    path: 'chat',
+    loadChildren: 'app/pages/chat/chat.module#ChatModule'
+  },
+  {
     path: 'register',
     loadChildren: 'app/pages/register/register.module#RegisterModule'
   },
